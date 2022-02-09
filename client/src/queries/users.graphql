@@ -1,0 +1,232 @@
+query user($userId: Int) {
+	users(first: 1, where: { userId: { eq: $userId } }) {
+		nodes {
+			userId
+			socialPoints
+			discordId
+			nickname
+			userRole
+			status
+			description
+			avatar
+			banner
+			lastOnline
+			level
+			views
+			sex
+			settings
+			isBanned
+			permissions
+			subscriberUsers {
+				subscriberId
+				subscriberNavigation {
+					userId
+					discordId
+					nickname
+					userRole
+					avatar
+					banner
+					permissions
+					lastOnline
+					discordRoles {
+						id
+						position
+						name
+					}
+				}
+			}
+			friendUsers {
+				friendId
+				friendNavigation {
+					userId
+					discordId
+					nickname
+					userRole
+					avatar
+					banner
+					permissions
+					lastOnline
+					discordRoles {
+						id
+						position
+						name
+					}
+				}
+			}
+			rating {
+				result
+				total
+				positive
+				negative
+				your
+			}
+			discordRoles {
+				id
+				position
+				name
+				color
+			}
+		}
+	}
+}
+
+query status($userId: Int!) {
+	status(id: $userId) {
+		heIsSubscriber
+		youIsSubscriber
+		isFriends
+	}
+}
+
+mutation startSubscribe($userId: Int!) {
+	startSubscribe(id: $userId) {
+		userId
+	}
+}
+
+mutation endSubscribe($userId: Int!) {
+	endSubscribe(id: $userId) {
+		userId
+	}
+}
+
+mutation removeFriend($userId: Int!) {
+	removeFriend(id: $userId) {
+		userId
+	}
+}
+
+mutation setBan($userId: Int!, $isBanned: Boolean) {
+	editUser(id: $userId, input: { isBanned: $isBanned }) {
+		userId
+	}
+}
+
+mutation setRole($userId: Int!, $role: UserRoleEnum) {
+	editUser(id: $userId, input: { role: $role }) {
+		userId
+	}
+}
+
+mutation saveUser(
+	$userId: Int!
+	$avatar: MediaLink!
+	$banner: MediaLink!
+	$description: String!
+	$status: String!
+	$sex: Int!
+) {
+	editUser(
+		id: $userId
+		input: {
+			avatar: $avatar
+			banner: $banner
+			description: $description
+			status: $status
+			sex: $sex
+		}
+	) {
+		userId
+	}
+}
+
+mutation setUserRole($userId: Int!, $userRole: UserRoleEnum!) {
+	editUser(id: $userId, input: { role: $userRole }) {
+		userId
+	}
+}
+
+mutation setRating($userId: Int!, $isPositive: Boolean) {
+	setRating(id: $userId, positive: $isPositive) {
+		userId
+	}
+}
+
+query users($search: String, $after: String, $first: Int, $last: Int, $before: String) {
+	users(
+		first: $first
+		last: $last
+		search: $search
+		after: $after
+		before: $before
+		order: { lastOnline: DESC }
+	) {
+		nodes {
+			userId
+			discordId
+			nickname
+			userRole
+			avatar
+			banner
+			permissions
+			lastOnline
+			discordRoles {
+				id
+				position
+				name
+			}
+		}
+		totalCount
+		pageInfo {
+			hasPreviousPage
+			hasNextPage
+			endCursor
+			startCursor
+		}
+	}
+}
+
+mutation setPermissions($userId: Int!, $permissions: Long!) {
+	editUser(id: $userId, input: { permissions: $permissions }) {
+		permissions
+	}
+}
+
+mutation addSocialPoints($userId: Int!, $socialPoints: Int!) {
+	addSocialPoints(id: $userId, socialPoints: $socialPoints) {
+		userId
+	}
+}
+
+mutation setSettings($userId: Int!, $r: Boolean, $rm: Boolean, $f: Boolean, $s: Boolean) {
+	editUser(
+		id: $userId
+		input: {
+			isNotifyOnReport: $r
+			isNotifyOnReportMessage: $rm
+			isNotifyOnNewFriend: $f
+			isNotifyOnNewSubscriber: $s
+		}
+	) {
+		userId
+	}
+}
+
+mutation incView($userId: Int!) {
+	incView(id: $userId)
+}
+
+query ratings {
+	me {
+		userId
+		ratingTos {
+			ratingId
+			from {
+				userId
+				discordId
+				nickname
+				userRole
+				avatar
+				banner
+				permissions
+				lastOnline
+				discordRoles {
+					id
+					position
+					name
+				}
+			}
+			positive
+		}
+	}
+}

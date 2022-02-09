@@ -1,0 +1,57 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply w-screen overflow-x-hidden bg-gray-900 text-gray-50 font-sans min-h-screen;
+	letter-spacing: 0.048em;
+	outline: none;
+	box-sizing: border-box;
+}
+
+*,
+*:after,
+*::before {
+	letter-spacing: inherit;
+	outline: inherit;
+	box-sizing: inherit;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+.scrollbar-hidden {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+	display: none;
+}
+
+::-webkit-scrollbar {
+	@apply w-2;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-gray-50 bg-opacity-25 rounded-lg;
+}
+
+input {
+	width: 1px;
+}

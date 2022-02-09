@@ -1,0 +1,16 @@
+mutation login {
+	login
+}
+
+query getMe {
+	me {
+		userId
+		permissions
+		nickname
+		userRole
+		avatar
+		settings
+		banreportEndAt
+		subscriptionEndAt
+	}
+}

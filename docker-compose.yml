@@ -1,0 +1,57 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    container_name: postgres-db
+    restart: always
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    env_file:
+      - .env.production
+    ports:
+      - 5436:5432
+    networks:
+      - app-network
+
+  server:
+    build: ./server
+    container_name: dotnet-server
+    restart: always
+    env_file:
+      - .env.production
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+  client:
+    build: ./client
+    container_name: svelte-client
+    restart: always
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: always
+    depends_on:
+      - client
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app-network
+    volumes:
+      - ./.nginx/nginx.conf:/etc/nginx/nginx.conf
+
+networks:
+  app-network:
+    driver: bridge

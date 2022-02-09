@@ -1,0 +1,20 @@
+query top($type: UserTopEnum!) {
+	top(type: $type) {
+		userId
+		discordId
+		socialPoints
+		nickname
+		level
+		views
+		totalFriends
+		totalSubscribers
+		rating {
+			result
+		}
+		userRole
+		avatar
+		banner
+		lastOnline
+		permissions
+	}
+}

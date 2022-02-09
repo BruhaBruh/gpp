@@ -1,0 +1,25 @@
+query siteOnline($type: OnlineTypes!) {
+	siteOnlineLogs(type: $type) {
+		max
+		avg
+		min
+		time
+	}
+}
+
+query serverOnline($type: OnlineTypes!) {
+	serverOnlineLogs(type: $type) {
+		max
+		avg
+		min
+		time
+	}
+}
+
+query newPlayers($type: OnlineTypes!) {
+	newPlayerLogs(type: $type) {
+		total
+		inc
+		time
+	}
+}
