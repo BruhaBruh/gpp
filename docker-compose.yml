@@ -7,8 +7,6 @@ services:
     restart: always
     env_file:
       - .env.production
-    ports:
-      - "5000:5000"
     networks:
       - app-network
 
@@ -18,8 +16,6 @@ services:
     restart: always
     depends_on:
       - server
-    ports:
-      - "3000:3000"
     networks:
       - app-network
 

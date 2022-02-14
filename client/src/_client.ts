@@ -9,7 +9,7 @@ const ssr = ssrExchange({
 });
 
 export default createClient({
-	url: 'http://localhost/graphql',
+	url: 'http://130.61.216.16/graphql',
 	preferGetMethod: false,
 	exchanges: [
 		dedupExchange,
