@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { slide } from 'svelte/transition';
+	import Plate from '../components_ui/Plate.svelte';
 	import Tooltip from '../components_ui/Tooltip.svelte';
 	import Typography from '../components_ui/Typography.svelte';
 	import { getSex, profile } from '../stores/profile';
 	import { ui } from '../stores/ui';
-	import UserBodyPlate from './UserBodyPlate.svelte';
 	import UserSetRating from './UserSetRating.svelte';
 
 	export let user: any;
@@ -32,7 +32,7 @@
 	class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4"
 >
 	{#if user.isBanned}
-		<UserBodyPlate
+		<Plate
 			iconClass="from-danger-600 to-danger-400 text-gray-900"
 			iconName="cancel"
 			name="Забанен"
@@ -44,10 +44,8 @@
 			popupText={isOwner
 				? 'Нажми, чтобы открыть список оценивших'
 				: 'Нажми, чтобы поставить рейтинг'}
-			topOffset={-8}
-			leftOffset={-288}
 		>
-			<UserBodyPlate
+			<Plate
 				iconClass="from-success-600 to-success-400 text-gray-900"
 				iconName="tops"
 				name="Рейтинг"
@@ -58,7 +56,7 @@
 			/>
 		</Tooltip>
 	{:else}
-		<UserBodyPlate
+		<Plate
 			iconClass="from-success-600 to-success-400 text-gray-900"
 			iconName="tops"
 			name="Рейтинг"
@@ -67,37 +65,37 @@
 			progressWidthPercent={(user.rating.positive / user.rating.total) * 100}
 		/>
 	{/if}
-	<UserBodyPlate
+	<Plate
 		iconClass="from-primary-600 to-primary-400 text-gray-900"
 		iconName="user-group"
 		name="Cоц. Рейтинг"
 		label={user.socialPoints}
 	/>
-	<UserBodyPlate
+	<Plate
 		iconClass="from-info-600 to-info-400 text-gray-900"
 		iconName="eye"
 		name="Просмотры"
 		label={user.views}
 	/>
-	<UserBodyPlate
+	<Plate
 		iconClass="from-warning-500 to-warning-400 text-gray-900"
 		iconName="age"
 		name="Лет в городе"
 		label={user.level}
 	/>
-	<UserBodyPlate
+	<Plate
 		iconClass="from-danger-500 to-danger-400 text-gray-900"
 		iconName="user"
 		name="Пол"
 		label={sex}
 	/>
-	<UserBodyPlate
+	<Plate
 		iconClass="from-danger-500 to-warning-400 text-gray-900"
 		iconName="users"
 		name="Друзей"
 		label={user.friendUsers.length}
 	/>
-	<UserBodyPlate
+	<Plate
 		iconClass="from-primary-500 to-danger-400 text-gray-900"
 		iconName="users"
 		name="Подписчиков"

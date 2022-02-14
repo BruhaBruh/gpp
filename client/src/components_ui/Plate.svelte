@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Icon, { IconName } from '../components_ui/Icon.svelte';
-	import Typography from '../components_ui/Typography.svelte';
+	import Icon, { IconName } from './Icon.svelte';
+	import Typography from './Typography.svelte';
 
 	export let iconClass: string = '';
 	export let iconName: IconName;

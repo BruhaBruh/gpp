@@ -1456,6 +1456,18 @@ export type GetMeQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetMeQuery = { __typename?: 'Query', me: { __typename?: 'User', userId: number, permissions: any, nickname: string, userRole: UserRoleEnum, avatar: string, settings: any, banreportEndAt?: any | null, subscriptionEndAt?: any | null } };
 
+export type DonateStatisticQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type DonateStatisticQuery = { __typename?: 'Query', donateStatistic: { __typename?: 'User', money: number, permissions: any, subscriptionEndAt?: any | null, trefs?: number | null } };
+
+export type DonateItemsQueryVariables = Exact<{
+  where?: InputMaybe<DonateitemFilterInput>;
+}>;
+
+
+export type DonateItemsQuery = { __typename?: 'Query', donateItems?: { __typename?: 'DonateItemsConnection', nodes?: Array<{ __typename?: 'Donateitem', donateitemId: number, name: string, description: string, type: number, amount: number, cost: number, icon?: number | null }> | null } | null };
+
 export type SiteOnlineQueryVariables = Exact<{
   type: OnlineTypes;
 }>;
@@ -1630,6 +1642,31 @@ export const GetMeDocument = gql`
     settings
     banreportEndAt
     subscriptionEndAt
+  }
+}
+    `;
+export const DonateStatisticDocument = gql`
+    query donateStatistic {
+  donateStatistic: me {
+    money
+    permissions
+    subscriptionEndAt
+    trefs
+  }
+}
+    `;
+export const DonateItemsDocument = gql`
+    query donateItems($where: DonateitemFilterInput) {
+  donateItems(first: 50, where: $where) {
+    nodes {
+      donateitemId
+      name
+      description
+      type
+      amount
+      cost
+      icon
+    }
   }
 }
     `;
@@ -1917,6 +1954,8 @@ export const RatingsDocument = gql`
     `;
 export type LoginMutationStore = OperationStore<LoginMutation, LoginMutationVariables>;
 export type GetMeQueryStore = OperationStore<GetMeQuery, GetMeQueryVariables>;
+export type DonateStatisticQueryStore = OperationStore<DonateStatisticQuery, DonateStatisticQueryVariables>;
+export type DonateItemsQueryStore = OperationStore<DonateItemsQuery, DonateItemsQueryVariables>;
 export type SiteOnlineQueryStore = OperationStore<SiteOnlineQuery, SiteOnlineQueryVariables>;
 export type ServerOnlineQueryStore = OperationStore<ServerOnlineQuery, ServerOnlineQueryVariables>;
 export type NewPlayersQueryStore = OperationStore<NewPlayersQuery, NewPlayersQueryVariables>;

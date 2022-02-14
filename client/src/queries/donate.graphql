@@ -1,0 +1,22 @@
+query donateStatistic {
+	donateStatistic: me {
+		money
+		permissions
+		subscriptionEndAt
+		trefs
+	}
+}
+
+query donateItems($where: DonateitemFilterInput) {
+	donateItems(first: 50, where: $where) {
+		nodes {
+			donateitemId
+			name
+			description
+			type
+			amount
+			cost
+			icon
+		}
+	}
+}

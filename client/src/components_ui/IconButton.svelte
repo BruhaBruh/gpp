@@ -103,18 +103,18 @@
 		class:bg-gray-200={color === 'secondary'}
 		class:hover:bg-gray-300={color === 'secondary'}
 		class:focus:ring-gray-100={color === 'secondary'}
-		class:bg-info-600={color === 'info'}
-		class:hover:bg-info-700={color === 'info'}
-		class:focus:ring-info-500={color === 'info'}
-		class:bg-success-600={color === 'success'}
-		class:hover:bg-success-700={color === 'success'}
-		class:focus:ring-success-500={color === 'success'}
-		class:bg-warning-600={color === 'warning'}
-		class:hover:bg-warning-700={color === 'warning'}
-		class:focus:ring-warning-500={color === 'warning'}
-		class:bg-danger-600={color === 'danger'}
-		class:hover:bg-danger-700={color === 'danger'}
-		class:focus:ring-danger-500={color === 'danger'}
+		class:bg-info-500={color === 'info'}
+		class:hover:bg-info-600={color === 'info'}
+		class:focus:ring-info-400={color === 'info'}
+		class:bg-success-500={color === 'success'}
+		class:hover:bg-success-600={color === 'success'}
+		class:focus:ring-success-400={color === 'success'}
+		class:bg-warning-500={color === 'warning'}
+		class:hover:bg-warning-600={color === 'warning'}
+		class:focus:ring-warning-400={color === 'warning'}
+		class:bg-danger-500={color === 'danger'}
+		class:hover:bg-danger-600={color === 'danger'}
+		class:focus:ring-danger-400={color === 'danger'}
 	>
 		<Icon {name} size={iconSize} style={iconStyle} />
 	</button>
@@ -139,14 +139,14 @@
 		class:hover:text-primary-700={color === 'primary'}
 		class:text-gray-200={color === 'secondary'}
 		class:hover:text-gray-300={color === 'secondary'}
-		class:text-info-600={color === 'info'}
-		class:hover:text-info-700={color === 'info'}
-		class:text-success-600={color === 'success'}
-		class:hover:text-success-700={color === 'success'}
-		class:text-warning-600={color === 'warning'}
-		class:hover:text-warning-700={color === 'warning'}
-		class:text-danger-600={color === 'danger'}
-		class:hover:text-danger-700={color === 'danger'}
+		class:text-info-500={color === 'info'}
+		class:hover:text-info-600={color === 'info'}
+		class:text-success-500={color === 'success'}
+		class:hover:text-success-600={color === 'success'}
+		class:text-warning-500={color === 'warning'}
+		class:hover:text-warning-600={color === 'warning'}
+		class:text-danger-500={color === 'danger'}
+		class:hover:text-danger-600={color === 'danger'}
 	>
 		<Icon {name} size={iconSize} style={iconStyle} />
 	</button>

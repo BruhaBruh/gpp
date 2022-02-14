@@ -4,6 +4,7 @@
 <div
 	{...$$restProps}
 	class={['p-4 rounded-lg shadow-md bg-gray-800', $$restProps.class].filter(Boolean).join(' ')}
+	on:click
 >
 	<slot />
 </div>
