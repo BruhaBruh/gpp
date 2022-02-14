@@ -3,7 +3,7 @@ version: "3"
 services:
   db:
     image: postgres
-    container_name: postgres-db
+    container_name: postgres-gpp-db
     restart: always
     volumes:
       - ./.database/postgres/data:/var/lib/postgresql/data
