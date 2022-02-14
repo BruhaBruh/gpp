@@ -16,7 +16,7 @@ services:
 
   server:
     build: ./server
-    container_name: dotnet-server
+    container_name: dotnet-gpp-server
     restart: always
     depends_on:
       - db
@@ -27,7 +27,7 @@ services:
 
   client:
     build: ./client
-    container_name: svelte-client
+    container_name: svelte-gpp-client
     restart: always
     depends_on:
       - server
