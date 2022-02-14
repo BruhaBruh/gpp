@@ -1,10 +1,25 @@
 version: "3"
 
 services:
+  db:
+    image: postgres
+    container_name: postgres-db
+    restart: always
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    env_file:
+      - .env.production
+    ports:
+      - 5437:5432
+    networks:
+      - app-network
+
   server:
     build: ./server
     container_name: dotnet-server
     restart: always
+    depends_on:
+      - db
     env_file:
       - .env.production
     networks:

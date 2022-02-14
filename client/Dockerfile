@@ -2,8 +2,6 @@ FROM node:16-alpine as builder
 
 WORKDIR /app
 
-EXPOSE 3000
-
 COPY . .
 
 RUN yarn
