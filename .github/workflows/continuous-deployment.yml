@@ -22,4 +22,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Send WebHook
-        run: curl http://130.61.216.16:9001/hooks/711b9c72-069c-41d9-aa7b-7df8c3172175?token=${{ secrets.GITHUB_TOKEN }}
+        run: curl http://130.61.216.16:9001/hooks/711b9c72-069c-41d9-aa7b-7df8c3172175?token=${{ secrets.WEBHOOK_TOKEN }}
