@@ -7,11 +7,11 @@ namespace GPPlanetGQL.Controllers
 {
     public class OnlineController : Controller
     {
-        private LimeService _limeService;
+        private readonly LimeService _limeService;
 
-        public OnlineController(IConfiguration config, [Service] LimeService _limeService)
+        public OnlineController([Service] LimeService limeService)
         {
-            _limeService = _limeService;
+            _limeService = limeService;
         }
 
         // GET: OnlineController
