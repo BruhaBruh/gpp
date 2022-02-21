@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GPPlanetGQL.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class OnlineController : Controller
     {
         private readonly LimeService _limeService;
@@ -14,7 +16,7 @@ namespace GPPlanetGQL.Controllers
             _limeService = limeService;
         }
 
-        // GET: OnlineController
+        [HttpGet()]
         public ActionResult Index()
         {
             return Ok(_limeService.GetOnline().Result);
